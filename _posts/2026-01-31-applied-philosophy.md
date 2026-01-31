@@ -24,7 +24,7 @@ These things are "hard" in some sense for LLMs, since they have sliding finite c
 
 I had a great working session with Claude on this.  What we devised has echoes of [APL](https://en.wikipedia.org/wiki/APL_%28programming_language%29) and [Plankalkül](https://en.wikipedia.org/wiki/Plankalk%C3%BCl).  (Plankalkül is a strange duck:  in some way, it's the first programming language, having been devised by Konrad Zuse in the late 1930s for his machine.  It featured a two-dimensional syntax and only had a primitive data type of a single bit.)
 
-Some other desiderata for the language, based on my aesthetic preferences:
+Some other desiderata for the language, based on my aesthetic preferences (not all of these made it in exactly but we got close):
 
 1. Homoiconic.  Code is data.
 2. Concatenative.  Stack-based computation.  (At this point, it's like a Forth-y Lisp-y APL.)
@@ -36,9 +36,9 @@ Some other desiderata for the language, based on my aesthetic preferences:
 
 Efficient semantic compression takes place along three axes:
 
-1. Elision, what can be inferred.  Implicit is better than explicit when inference can take place trivially.  Effects are pure unless annotated.  Arguments are positionally marked with de Bruijn indices rather than by names.
-2. Factoring, shared structure (write-once code).  The AST is a DAG, not a tree.  Common subexpressions get names or indices once.  If multiple references occur we reference rather than redefining.  Macros can quote and unquote.
-3. Density, more meaning per glyph.  In fact, we can even have expansions while still preserving semantic atoms.  `⊛Σ` is a single unit (a catamorphism)
+1. **Elision, what can be inferred.**  Implicit is better than explicit when inference can take place trivially.  Effects are pure unless annotated.  Arguments are positionally marked with de Bruijn indices rather than by names.
+2. **Factoring, shared structure (write-once code).**  The AST becomes a DAG, not a tree (`goth` has a tree right now but we hope to change this as it evolves).  Common subexpressions get names or indices once.  If multiple references occur we reference rather than redefining.  Macros can quote and unquote.
+3. **Density, more meaning per glyph.**  In fact, we can even have expansions while still preserving semantic atoms.  `⊛Σ` is a single unit (a catamorphism)
 
 With all that in hand, we set out together to build a new language.  The initial design went surprisingly fast with Claude Code:  within 24 hours we had a working interpreter for the language.  There was a premature attempt to build an LLVM compiler, `gothic`, which has been explicitly pended until `goth` is itself more settled.
 
