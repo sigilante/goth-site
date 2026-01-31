@@ -513,6 +513,16 @@ body::before {
     transition: all 0.3s ease;
 }
 
+/* Footer */
+.site-footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.85em;
+}
+
 /* Selection styling */
 ::selection {
     background: #ff1493;
