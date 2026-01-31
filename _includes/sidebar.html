@@ -4,11 +4,11 @@
 
 <div class="frame collapsible">
     <details>
-        <summary class="gothic-header pink">docs</summary>
+        <summary class="gothic-header pink">hot topics</summary>
         <ul class="menu">
-            <li><a href="{{ '/docs/keywords/' | relative_url }}">keywords</a></li>
-            <li><a href="{{ '/reference/' | relative_url }}">reference</a></li>
-            <li><a href="{{ '/examples/' | relative_url }}">examples</a></li>
+            {% for post in site.posts limit:5 %}
+            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+            {% endfor %}
         </ul>
     </details>
 </div>

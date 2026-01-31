@@ -378,7 +378,7 @@ body::before {
 /* Mascot */
 .mascot-container {
     position: absolute;
-    bottom: 100%;
+    bottom: calc(100% - 30px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
