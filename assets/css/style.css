@@ -224,7 +224,6 @@ body::before {
 }
 
 .lower-links {
-    margin-top: auto;
     position: relative;
     z-index: 2;
 }
@@ -375,13 +374,18 @@ body::before {
     color: #ffd700;
 }
 
+.lower-links-wrapper {
+    position: relative;
+    margin-top: auto;
+}
+
 /* Mascot */
 .mascot-container {
     position: absolute;
     bottom: calc(100% - 30px);
     left: 50%;
     transform: translateX(-50%);
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
 }
 
