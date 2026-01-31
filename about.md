@@ -36,6 +36,9 @@ title: About Goth
     <p>Use the language.  The source code is available at <a href="https://github.com/sigilante/goth"><code class="language-plaintext highlighter-rouge">sigilante/goth</code></a>.  We need benchmarks with various LLMs (instructions are in the benchmarks/ directory) and we need more examples of programs written in the language.  (We’re particularly interested in examples that show off the language’s strengths in areas like type-level reasoning and semantic compression.)</p>
   </li>
   <li>
+    <p>Start your own working group or community permissionlessly. <code class="language-plaintext highlighter-rouge">goth</code> is like Elm or Julia: it’s an open-source project available under the MIT License.</p>
+  </li>
+  <li>
     <p>There is a <a href="https://bags.fm/BJM8YzhZ6Mu2iccB1RVhHiEGFoU76ivYfAU5nRyKBAGS"><code class="language-plaintext highlighter-rouge">$GOTH</code> ticker on bags.fm</a>.  This is an experimental meme coin which I did not create or launch. Someone designated me as the fee recipient, so I receive 1% of trading volume. I do not endorse, recommend, or promote this token. Claiming fees ≠ endorsement. <code class="language-plaintext highlighter-rouge">$GOTH</code> is a highly speculative instrument with no connection to the goth language project, no roadmap, and no utility. This is not financial advice and I’m not a financial advisor. Memecoins are extremely risky, as most lose nearly all value. I’m claiming these fees out of curiosity about the platform’s model, not because I believe this token has value. Do not buy this expecting to support the goth project:  there are better ways to contribute if that’s your goal (see the above).</p>
   </li>
 </ol>
