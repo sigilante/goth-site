@@ -1,9 +1,10 @@
-/* Textura Libera font - using a blackletter style */
+/* Textura Libera font - Black weight */
 @font-face {
     font-family: 'Textura';
-    src: local('Old English Text MT'), local('Blackletter'), local('UnifrakturMaguntia');
-    font-weight: normal;
+    src: url('/assets/fonts/TexturaLibera-Black.otf') format('opentype');
+    font-weight: 900;
     font-style: normal;
+    font-display: swap;
 }
 
 * {

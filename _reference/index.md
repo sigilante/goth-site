@@ -1,5 +1,6 @@
 ---
 title: Language Reference
+permalink: /reference/
 ---
 
 # Language Reference

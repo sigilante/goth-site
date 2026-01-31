@@ -32,7 +32,7 @@ collections:
     permalink: /examples/:path/
   reference:
     output: true
-    permalink: /reference/:name/
+    permalink: /reference/:path/
 
 # Defaults
 defaults:
@@ -41,7 +41,7 @@ defaults:
     values:
       layout: "default"
   - scope:
-      path: "reference"
+      path: "_reference"
       type: "reference"
     values:
       layout: "default"
