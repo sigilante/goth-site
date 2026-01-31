@@ -109,7 +109,7 @@ body::before {
         2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-.main-title {
+.gothic-header.pink.main-title {
     font-size: 5em !important;
     text-align: center;
     margin: 0;
