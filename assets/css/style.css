@@ -1,0 +1,633 @@
+/* Textura Libera font - using a blackletter style */
+@font-face {
+    font-family: 'Textura';
+    src: local('Old English Text MT'), local('Blackletter'), local('UnifrakturMaguntia');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fira Code', monospace;
+    background: linear-gradient(135deg,
+        #ff69b4 0%,
+        #ff1493 25%,
+        #c71585 50%,
+        #ff1493 75%,
+        #ff69b4 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Texture overlay for that 90s grunge */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+    min-height: 100vh;
+    align-items: start;
+}
+
+/* Frames - black with pink borders */
+.frame {
+    background: #000;
+    border: 3px solid #ff1493;
+    border-radius: 0;
+    padding: 20px;
+    box-shadow:
+        0 0 10px rgba(255, 20, 147, 0.5),
+        inset 0 0 20px rgba(255, 20, 147, 0.1);
+    position: relative;
+}
+
+.frame::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border: 1px solid #ff69b4;
+    pointer-events: none;
+}
+
+/* Gothic Headers */
+.gothic-header {
+    font-family: 'Textura', 'Old English Text MT', 'Blackletter', serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    margin-bottom: 15px;
+}
+
+.gothic-header.pink {
+    color: #ff1493;
+    text-shadow:
+        0 0 10px #ff1493,
+        0 0 20px #ff1493,
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 2.5em;
+}
+
+.gothic-header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gothic-header a:hover {
+    text-shadow:
+        0 0 20px #ff1493,
+        0 0 30px #ff1493,
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.main-title {
+    font-size: 5em !important;
+    text-align: center;
+    margin: 0;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow:
+            0 0 10px #ff1493,
+            0 0 20px #ff1493,
+            0 0 30px #ff1493,
+            2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    to {
+        text-shadow:
+            0 0 20px #ff1493,
+            0 0 30px #ff1493,
+            0 0 40px #ff1493,
+            0 0 50px #ff1493,
+            2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+}
+
+/* Sidebar */
+.sidebar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 20px;
+    height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.sidebar-left::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar-left::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-left::-webkit-scrollbar-thumb {
+    background: rgba(255, 20, 147, 0.5);
+    border-radius: 4px;
+}
+
+.lower-links {
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.lower-links h2 {
+    margin-bottom: 10px;
+}
+
+.lower-links h2.small {
+    font-size: 2em;
+}
+
+.lower-links h2:last-child {
+    margin-bottom: 0;
+}
+
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.menu a {
+    color: #b19cd9;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.menu a:hover {
+    color: #ff1493;
+    transform: translateX(5px);
+    text-shadow: 0 0 10px #ff1493;
+}
+
+/* Main Content */
+.main-content {
+    grid-column: 2;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    position: relative;
+}
+
+.main-content::-webkit-scrollbar {
+    width: 12px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff1493, #c71585);
+    border-radius: 6px;
+}
+
+.main-frame {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+}
+
+.header-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tagline {
+    color: #ff69b4;
+    font-size: 1.2em;
+    margin-top: 10px;
+    font-style: italic;
+    letter-spacing: 3px;
+}
+
+/* Geometry Section */
+.geometry-section {
+    width: 100%;
+    max-width: 500px;
+    margin: 30px 0;
+}
+
+.metatron {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.3));
+}
+
+/* Code Section */
+.code-section {
+    width: 100%;
+    margin-top: 30px;
+    background: #000 !important;
+}
+
+.code-example {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #fff;
+    overflow-x: auto;
+    white-space: pre;
+    background: transparent;
+}
+
+.code-example .comment {
+    color: #888;
+    font-style: italic;
+}
+
+.code-example .keyword {
+    color: #ff1493;
+    font-weight: bold;
+}
+
+.code-example .function {
+    color: #b19cd9;
+    font-weight: bold;
+}
+
+.code-example .type {
+    color: #4ec9b0;
+}
+
+.code-example .operator {
+    color: #ff1493;
+}
+
+.code-example .var {
+    color: #9cdcfe;
+}
+
+.code-example .number {
+    color: #b5cea8;
+}
+
+.code-example .control {
+    color: #c586c0;
+}
+
+.code-example .paren {
+    color: #ffd700;
+}
+
+/* Mascot */
+.mascot-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: -60px;
+    z-index: 1;
+}
+
+.mascot {
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.5));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Stars effect */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stars::before,
+.stars::after {
+    content: '✦';
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.stars::before {
+    top: 20%;
+    left: 15%;
+    animation-delay: 0s;
+}
+
+.stars::after {
+    top: 60%;
+    right: 20%;
+    animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+    border: 1px solid #ff1493;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff1493, #c71585);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff69b4, #ff1493);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar-left {
+        position: static;
+        height: auto;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        flex-wrap: wrap;
+    }
+
+    .mascot-container {
+        display: none;
+    }
+
+    .lower-links {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content {
+        grid-column: 1;
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .main-title {
+        font-size: 3em !important;
+    }
+}
+
+/* Extra 90s touches */
+.frame:hover {
+    box-shadow:
+        0 0 20px rgba(255, 20, 147, 0.8),
+        inset 0 0 30px rgba(255, 20, 147, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Selection styling */
+::selection {
+    background: #ff1493;
+    color: #000;
+}
+
+::-moz-selection {
+    background: #ff1493;
+    color: #000;
+}
+
+/* ==========================================
+   Markdown Content Styles (for reference/examples pages)
+   ========================================== */
+
+.main-frame h1 {
+    color: #ff1493;
+    font-size: 2.2em;
+    margin: 0 0 20px 0;
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+    width: 100%;
+}
+
+.main-frame h2 {
+    color: #ff1493;
+    font-size: 1.6em;
+    margin: 30px 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 20, 147, 0.3);
+    width: 100%;
+}
+
+.main-frame h3 {
+    color: #ff69b4;
+    font-size: 1.3em;
+    margin: 25px 0 10px 0;
+    width: 100%;
+}
+
+.main-frame h4 {
+    color: #ff69b4;
+    font-size: 1.1em;
+    margin: 20px 0 8px 0;
+    width: 100%;
+}
+
+.main-frame p {
+    color: #b19cd9;
+    line-height: 1.8;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.main-frame a {
+    color: #ff69b4;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease;
+}
+
+.main-frame a:hover {
+    color: #ff1493;
+    border-bottom-color: #ff1493;
+    text-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
+}
+
+.main-frame code {
+    font-family: 'Fira Code', monospace;
+    background: rgba(255, 20, 147, 0.1);
+    border: 1px solid rgba(255, 20, 147, 0.3);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    color: #ff69b4;
+}
+
+.main-frame pre {
+    background: #0a0a0a;
+    border: 2px solid rgba(255, 20, 147, 0.4);
+    border-radius: 0;
+    padding: 20px;
+    overflow-x: auto;
+    margin: 15px 0;
+    width: 100%;
+    box-shadow: inset 0 0 15px rgba(255, 20, 147, 0.05);
+}
+
+.main-frame pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    color: #e0e0e0;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.main-frame table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+}
+
+.main-frame thead {
+    background: rgba(255, 20, 147, 0.15);
+}
+
+.main-frame th {
+    color: #ff1493;
+    font-weight: bold;
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 2px solid #ff1493;
+}
+
+.main-frame td {
+    color: #b19cd9;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 20, 147, 0.15);
+}
+
+.main-frame tr:hover td {
+    background: rgba(255, 20, 147, 0.05);
+}
+
+.main-frame ul,
+.main-frame ol {
+    color: #b19cd9;
+    line-height: 1.8;
+    margin: 10px 0 15px 25px;
+    width: 100%;
+}
+
+.main-frame li {
+    margin: 5px 0;
+}
+
+.main-frame li code {
+    font-size: 0.85em;
+}
+
+.main-frame blockquote {
+    border-left: 3px solid #ff1493;
+    padding: 10px 20px;
+    margin: 15px 0;
+    background: rgba(255, 20, 147, 0.05);
+    color: #b19cd9;
+    font-style: italic;
+    width: 100%;
+}
+
+.main-frame blockquote p {
+    margin-bottom: 0;
+}
+
+.main-frame strong {
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+.main-frame em {
+    color: #d8b4fe;
+    font-style: italic;
+}
+
+.main-frame hr {
+    border: none;
+    border-top: 1px solid rgba(255, 20, 147, 0.3);
+    margin: 30px 0;
+    width: 100%;
+}
+
+/* Syntax highlighting for rouge */
+.main-frame .highlight {
+    background: #0a0a0a;
+    border: 2px solid rgba(255, 20, 147, 0.4);
+    padding: 20px;
+    margin: 15px 0;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.main-frame .highlight pre {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}

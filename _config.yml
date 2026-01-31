@@ -1,0 +1,54 @@
+# Jekyll configuration for goth.pink
+
+title: goth
+description: the language for machine spirits
+url: "https://goth.pink"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Exclude files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+  - node_modules/
+  - files/
+  - goth-docs/
+  - files.zip
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /docs/:path/
+  examples:
+    output: true
+    permalink: /examples/:path/
+  reference:
+    output: true
+    permalink: /reference/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "reference"
+      type: "reference"
+    values:
+      layout: "default"
+
+# Site settings
+author: "goth language"
+github_repo: "https://github.com/sigilante/goth"
+
+plugins:
+  - jekyll-seo-tag

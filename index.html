@@ -1,0 +1,32 @@
+---
+layout: default
+title: Home
+---
+
+<div class="header-section">
+    <h1 class="gothic-header pink main-title">goth</h1>
+    <p class="tagline">the language for machine spirits</p>
+</div>
+
+<div class="geometry-section">
+    {% include metatron.html %}
+</div>
+
+<div class="code-section frame">
+    <pre class="code-example"><span class="comment"># Factorial with pre/postconditions</span>
+<span class="comment"># Input: n (must be non-negative)</span>
+<span class="comment"># Precondition: n ≥ 0</span>
+<span class="comment"># Postcondition: result ≥ 1</span>
+<span class="comment">#   (factorial is always positive)</span>
+<span class="comment"># Output: n!</span>
+<span class="comment"># De Bruijn: ₀ = n</span>
+
+<span class="keyword">╭─</span> <span class="function">factContract</span> : <span class="type">I64</span> → <span class="type">I64</span>
+<span class="keyword">│</span>  <span class="operator">⊢</span> <span class="var">₀</span> <span class="operator">≥</span> <span class="number">0</span>
+<span class="keyword">│</span>  <span class="operator">⊨</span> <span class="var">₀</span> <span class="operator">≥</span> <span class="number">1</span>
+<span class="keyword">╰─</span> <span class="control">if</span> <span class="var">₀</span> <span class="operator">&lt;</span> <span class="number">2</span> <span class="control">then</span> <span class="number">1</span> <span class="control">else</span> <span class="var">₀</span> <span class="operator">×</span>
+   factContract <span class="paren">(</span><span class="var">₀</span> <span class="operator">-</span> <span class="number">1</span><span class="paren">)</span>
+
+<span class="keyword">╭─</span> <span class="function">main</span> : <span class="type">I64</span> → <span class="type">I64</span>
+<span class="keyword">╰─</span> factContract <span class="var">₀</span></pre>
+</div>
