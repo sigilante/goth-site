@@ -42,7 +42,7 @@ Efficient semantic compression takes place along three axes:
 
 With all that in hand, we set out together to build a new language.  The initial design went surprisingly fast with Claude Code:  within 24 hours we had a working interpreter for the language.  There was a premature attempt to build an LLVM compiler, `gothic`, which has been explicitly pended until `goth` is itself more settled.
 
-## How to Get Involved
+## Community
 
 1. Join the `goth` community either by connecting to me [`@sigilante`](https://github.com/sigilante) on X or contacting with the group on Urbit at `~fabled-wander-lagrev-nocfep/v1bba7qe` ([join Tlon here](https://tlon.io/waitlist) or [explore other options here](https://urbit.org/overview/running-urbit/hosting-providers)).
 
