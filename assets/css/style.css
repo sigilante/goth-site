@@ -113,6 +113,7 @@ body::before {
     font-size: 5em !important;
     text-align: center;
     margin: 0;
+    color: #000;
     animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -149,6 +150,11 @@ body::before {
     font-size: 3.5em !important;
     margin-bottom: 0;
     font-weight: 900;
+    color: #000;
+}
+
+.sidebar-title.pink {
+    color: #000;
 }
 
 /* Collapsible sidebar sections */
@@ -371,12 +377,12 @@ body::before {
 
 /* Mascot */
 .mascot-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
-    margin-bottom: -60px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
+    pointer-events: none;
 }
 
 .mascot {
