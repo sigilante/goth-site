@@ -72,6 +72,56 @@ The `use` declaration takes a relative path and inlines all declarations into th
 | `tui.goth` | Terminal UI (ANSI escapes, cursor, raw mode) |
 | `crypto.goth` | SHA-256, SHA-1, MD5, HMAC, PBKDF2 |
 | `random.goth` | Seeded PRNG (xorshift64) with state-passing |
+| `json.goth` | JSON parser and serializer ([detail](stdlib-json/)) |
+
+## JSON
+
+The `json.goth` module provides a pure-Goth JSON parser and serializer. JSON values are represented as tagged 2-tuples `⟨tag, payload⟩`:
+
+| Tag | Type | Payload | Constructor |
+|-----|------|---------|-------------|
+| 0 | null | `0` | `jsonNull ⟨⟩` |
+| 1 | bool | `Bool` | `jsonBool ⊤` |
+| 2 | number | `F64` | `jsonNum 3.14` |
+| 3 | string | `String` | `jsonStr "hi"` |
+| 4 | array | `[n]Json` | `jsonArr [...]` |
+| 5 | object | `[n]⟨String, Json⟩` | `jsonObj [⟨"k", v⟩]` |
+
+**Parse and extract fields:**
+
+```goth
+use "stdlib/json.goth"
+
+╭─ main : () → String
+╰─ let r = parseJson "{\"name\":\"Goth\",\"version\":1}"
+   in if ¬(r.0) then "error: " ⧺ r.2
+   else let json = r.1
+   in let name = jsonGet "name" json
+   in if name.0 then asStr name.1 else "unknown"
+```
+
+**Build and serialize:**
+
+```goth
+let obj = jsonObj [⟨"x", jsonNum 1.0⟩, ⟨"y", jsonArr [jsonBool ⊤, jsonNull ⟨⟩]⟩]
+in toJson obj
+# {"x":1,"y":[true,null]}
+```
+
+**Core API:**
+
+| Function | Signature | Description |
+|----------|-----------|-------------|
+| `parseJson` | `String → ⟨Bool, Json, String⟩` | Parse; `⟨⊤, val, ""⟩` or `⟨⊥, 0, msg⟩` |
+| `toJson` | `Json → String` | Serialize to compact JSON |
+| `jsonGet` | `String → Json → ⟨Bool, Json⟩` | Lookup key in object |
+| `jsonIndex` | `ℤ → Json → ⟨Bool, Json⟩` | Index into array |
+| `jsonKeys` | `Json → [n]String` | Object keys |
+| `jsonValues` | `Json → [n]Json` | Object values |
+| `jsonLen` | `Json → ℤ` | Array/object length |
+| `jsonType` | `Json → String` | `"null"`, `"bool"`, `"number"`, etc. |
+
+See the [full JSON reference](stdlib-json/) for all constructors, predicates, and extractors.
 
 ## Random Number Generation
 

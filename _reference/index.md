@@ -20,6 +20,7 @@ Goth v0.2.0 — complete syntax and semantics for the interpreted implementation
 9. [Control Flow](control-flow/) — if/then/else, match, recursion
 10. [Primitives](primitives/) — built-in functions: math, I/O, conversions, linear algebra
 11. [Advanced Features](advanced/) — do-notation, casts, modules, REPL
+12. [JSON Module](stdlib-json/) — parser, serializer, constructors, accessors
 
 ## Notation
 
