@@ -74,6 +74,16 @@ title: Primitives
 | `diag` | `[n]F64 → [n n]F64` | Diagonal vector → diagonal matrix |
 | `diag` | `[n n]F64 → [n]F64` | Square matrix → diagonal vector |
 | `eye` | `ℤ → [n n]F64` | Identity matrix of size n |
+| `eig` | `[n n]F64 → [n]F64\|[n]ℂ` | Eigenvalues (real → Float, complex → Complex) |
+| `eigvecs` | `[n n]F64 → ⟨[n]α, [n n]α⟩` | Eigenvalues + eigenvector matrix |
+
+`eig` uses QR iteration with Wilkinson shifts on Hessenberg form. Returns a Float tensor when all eigenvalues are real, or a Generic tensor of Complex values when any are complex (consistent with `sqrt`). `eigvecs` returns a tuple of (eigenvalues, eigenvector\_matrix) where columns of the matrix are eigenvectors:
+
+```goth
+eig [[2,1],[1,2]]              # [3, 1]
+eig [[0,-1],[1,0]]             # [0+1𝕚, 0-1𝕚]
+eigvecs (diag [5,3])           # ⟨[5, 3], [[1,0],[0,1]]⟩
+```
 
 ## Linear System Solvers
 
