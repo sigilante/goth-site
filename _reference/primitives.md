@@ -35,16 +35,16 @@ title: Primitives
 
 | Name | Signature |
 |------|-----------|
-| `√`, `sqrt` | `F64 → F64` |
-| `exp` | `F64 → F64` |
-| `ln` | `F64 → F64` |
+| `√`, `sqrt` | `F64 → F64` (or `ℂ → ℂ`) |
+| `exp` | `F64 → F64` (or `ℂ → ℂ`) |
+| `ln` | `F64 → F64` (or `ℂ → ℂ`) |
 | `log10` | `F64 → F64` |
 | `log2` | `F64 → F64` |
-| `sin`, `cos`, `tan` | `F64 → F64` |
+| `sin`, `cos`, `tan` | `F64 → F64` (sin/cos also `ℂ → ℂ`) |
 | `asin`, `acos`, `atan` | `F64 → F64` |
 | `sinh`, `cosh`, `tanh` | `F64 → F64` |
 | `floor`, `ceil`, `round` | `F64 → F64` |
-| `abs` | Numeric → Numeric |
+| `abs` | Numeric → Numeric (ℂ/ℍ → F: modulus) |
 | `Γ` | `F64 → F64` |
 
 **Unicode alternatives:**
@@ -63,6 +63,53 @@ title: Primitives
 | `norm` | `[n]F64 → F64` | Euclidean norm |
 | `matmul` | `[m n]F64 → [n p]F64 → [m p]F64` | Matrix multiply |
 | `⍉`, `transpose` | `[m n]α → [n m]α` | Transpose |
+
+## Matrix Utilities
+
+| Name | Signature | Description |
+|------|-----------|-------------|
+| `trace`, `tr` | `[n n]F64 → F64` | Sum of diagonal elements |
+| `det` | `[n n]F64 → F64` | Determinant (LU decomposition) |
+| `inv` | `[n n]F64 → [n n]F64` | Matrix inverse (errors on singular) |
+| `diag` | `[n]F64 → [n n]F64` | Diagonal vector → diagonal matrix |
+| `diag` | `[n n]F64 → [n]F64` | Square matrix → diagonal vector |
+| `eye` | `ℤ → [n n]F64` | Identity matrix of size n |
+
+## Linear System Solvers
+
+| Name | Signature | Description |
+|------|-----------|-------------|
+| `solve` | `[n n]F64 → [n]F64 → [n]F64` | Solve Ax = b (LU, default) |
+| `solveWith` | `[n n]F64 → [n]F64 → String → [n]F64` | Solve with method choice |
+
+`solveWith` accepts a method string: `"lu"` (Doolittle with partial pivoting) or `"qr"` (Householder reflections). QR also handles overdetermined (least-squares) systems:
+
+```goth
+solve [[2,1],[5,3]] [4,7]               # [5, -6]
+solveWith [[1,1],[1,2],[1,3]] [1,2,2] "qr"  # least squares
+```
+
+## Complex and Quaternion
+
+| Name | Signature | Description |
+|------|-----------|-------------|
+| `re` | `ℂ → F` | Real part (`re(3+4𝕚) = 3`) |
+| `im` | `ℂ → F` | Imaginary part (`im(3+4𝕚) = 4`) |
+| `conj` | `ℂ → ℂ` | Conjugate (`conj(3+4𝕚) = 3-4𝕚`) |
+| `arg` | `ℂ → F` | Argument in radians (`arg(𝕚) = π/2`) |
+
+For quaternions, `im` returns a 3-tuple `⟨i, j, k⟩` and `conj` negates all imaginary components.
+
+All standard math functions extend to complex arguments:
+
+```goth
+exp(π𝕚)                    # ≈ -1 (Euler's identity)
+sin(𝕚)                     # 0 + sinh(1)𝕚
+sqrt(-4)                   # 2𝕚
+ln(𝕚)                      # π𝕚/2
+```
+
+Arithmetic operators (`+`, `-`, `×`, `/`, `^`) work with complex and quaternion operands. Types auto-promote: `ℤ → F → ℂ → ℍ`.
 
 ## Type Conversions
 

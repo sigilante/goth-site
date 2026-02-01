@@ -18,6 +18,8 @@ title: Types
 | `Char` | Unicode character |
 | `String` | UTF-8 string |
 | `()` | Unit type |
+| `ℂ`, `Complex` | Complex number (f64, f64) |
+| `ℍ`, `Quaternion` | Quaternion (f64, f64, f64, f64) |
 
 All integer types are stored as **i128** at runtime. The type distinctions exist for documentation and type checking. The standard library primarily uses `ℤ`, `F`, and `Bool`.
 
@@ -119,6 +121,55 @@ Uncertainty propagates automatically through arithmetic:
 | `ln(x±δx)` | δ = δx / \|x\| |
 
 Supported functions: `+`, `-`, `×`, `/`, `^`, `√`, `exp`, `ln`, `log10`, `log2`, `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `sinh`, `cosh`, `tanh`, `abs`, `floor`, `ceil`, `round`, `Γ`.
+
+## Complex and Quaternion Types
+
+**Complex numbers** (`ℂ`):
+
+```goth
+ℂ                           # Complex type (re, im)
+3 + 4𝕚                      # Complex literal
+```
+
+Complex values are stored as pairs of `f64`. Arithmetic operators (`+`, `-`, `×`, `/`, `^`) and math functions (`exp`, `ln`, `sqrt`, `sin`, `cos`) extend to complex numbers automatically.
+
+**Auto-promotion chain:** `ℤ → F → ℂ → ℍ`. Mixing types promotes to the widest:
+
+```goth
+5 + 3𝕚                      # Int + Complex → Complex(5, 3)
+```
+
+**Quaternions** (`ℍ`):
+
+```goth
+ℍ                           # Quaternion type (w, i, j, k)
+1 + 2𝕚 + 3𝕛 + 4𝕜          # Quaternion literal
+```
+
+Quaternion multiplication is non-commutative and follows Hamilton's rules:
+
+| Product | Result |
+|---------|--------|
+| `𝕚 × 𝕛` | `𝕜` |
+| `𝕛 × 𝕜` | `𝕚` |
+| `𝕜 × 𝕚` | `𝕛` |
+| `𝕛 × 𝕚` | `-𝕜` |
+| `𝕚 × 𝕛 × 𝕜` | `-1` |
+
+**Decomposition primitives:**
+
+| Name | Signature | Description |
+|------|-----------|-------------|
+| `re` | `ℂ → F` | Real part |
+| `im` | `ℂ → F` | Imaginary part (quaternion returns tuple) |
+| `conj` | `ℂ → ℂ` | Conjugate |
+| `arg` | `ℂ → F` | Argument (angle in radians) |
+
+**Special behavior:**
+
+- `sqrt` of a negative real returns a complex result: `√(-4) = 2𝕚`
+- `abs` of complex/quaternion returns the modulus as a float
+- `conj(a+b𝕚) = a-b𝕚`, `conj(w+x𝕚+y𝕛+z𝕜) = w-x𝕚-y𝕛-z𝕜`
 
 ## Interval Types
 
