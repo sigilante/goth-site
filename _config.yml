@@ -49,6 +49,9 @@ defaults:
 # Site settings
 author: "goth language"
 github_repo: "https://github.com/sigilante/goth"
+image: /assets/images/goth-social.png
+twitter:
+  card: summary_large_image
 
 plugins:
   - jekyll-seo-tag
